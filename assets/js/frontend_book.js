@@ -513,6 +513,9 @@ window.FrontendBook = window.FrontendBook || {};
         var serviceId = $('#select-service').val();
         var servicePrice = '';
         var serviceCurrency = '';
+        var newTestField = GeneralFunctions.escapeHtml($('#new-test-field').val());
+
+
 
         GlobalVariables.availableServices.forEach(function (service, index) {
             if (Number(service.id) === Number(serviceId) && Number(service.price) > 0) {
@@ -541,6 +544,10 @@ window.FrontendBook = window.FrontendBook || {};
                         $('<br/>'),
                         $('<span/>', {
                             'text': EALang.start + ': ' + selectedDate + ' ' + $('.selected-hour').text()
+                        }),
+                        $('<br/>'),
+						$('<span/>', {
+                            'text': EALang.new_test_field + ': ' + newTestField 
                         }),
                         $('<br/>'),
                         $('<span/>', {
@@ -629,7 +636,8 @@ window.FrontendBook = window.FrontendBook || {};
             notes: $('#notes').val(),
             is_unavailable: false,
             id_users_provider: $('#select-provider').val(),
-            id_services: $('#select-service').val()
+            id_services: $('#select-service').val(),
+            new_test_field: $('#new-test-field').val()
         };
 
         data.manage_mode = FrontendBook.manageMode;

@@ -318,6 +318,13 @@
                                 </label>
                                 <textarea id="notes" maxlength="500" class="form-control" rows="1"></textarea>
                             </div>
+                            <div class="form-group">
+                              <label for="new-test-field" class="control-label">
+                                    <?= lang('new_test_field') ?>
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" id="new-test-field" class="required form-control" maxlength="80"/>
+                            </div>
                         </div>
                     </div>
                 </div>
