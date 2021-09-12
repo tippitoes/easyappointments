@@ -105,7 +105,8 @@
                                 <label for="select-service">
                                     <strong><?= lang('service') ?></strong>
                                 </label>
-
+                                
+                 
                                 <select id="select-service" class="form-control">
                                     <?php
                                     // Group services by category, only if there is at least one service with a parent category.
@@ -174,7 +175,21 @@
                                     ?>
                                 </select>
                             </div>
+                            
+          				    <div class="form-group">
+                                <label for="select-inmate">
+                                    <strong><?= lang('inmates') ?></strong>
+                                </label>
 
+                                <select id="select-inmate" class="form-control">
+                                <?php 
+                                foreach ($available_inmates as $inmate)
+                                {
+                                    echo '<option value="' . $inmate['id'] . '">' . $inmate['id']. "-" .$inmate['inmate_name'] . '</option>';
+                                }                            
+            					?>
+            					</select>
+                            </div>
                             <div class="form-group">
                                 <label for="select-provider">
                                     <strong><?= lang('provider') ?></strong>
@@ -182,7 +197,7 @@
 
                                 <select id="select-provider" class="form-control"></select>
                             </div>
-
+                                      
                             <div id="service-description"></div>
                         </div>
                     </div>
@@ -302,6 +317,13 @@
                                     <?= lang('notes') ?>
                                 </label>
                                 <textarea id="notes" maxlength="500" class="form-control" rows="1"></textarea>
+                            </div>
+                            <div class="form-group">
+                              <label for="new-test-field" class="control-label">
+                                    <?= lang('new_test_field') ?>
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" id="new-test-field" class="required form-control" maxlength="80"/>
                             </div>
                         </div>
                     </div>
@@ -433,6 +455,7 @@
 
 <script>
     var GlobalVariables = {
+        availableInmates: <?= json_encode($available_inmates) ?>,
         availableServices: <?= json_encode($available_services) ?>,
         availableProviders: <?= json_encode($available_providers) ?>,
         baseUrl: <?= json_encode(config('base_url')) ?>,
